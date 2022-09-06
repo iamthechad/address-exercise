@@ -1,6 +1,6 @@
 <div class="overlay" (click)="close()">
 </div>
-<div class="side-panel" @slideInOut (@slideInOut.start)="onAnimationEvent($event)" (@slideInOut.done)="onAnimationEvent($event)">
+<div class="side-panel" @slideInOut>
   <mat-card>
     <mat-card-header class="action-header">
       <button mat-icon-button color="primary" aria-label="Return to address list" (click)="close()">

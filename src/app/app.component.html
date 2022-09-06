@@ -1,24 +1,4 @@
 <!-- Header? -->
 <!-- Address Table -->
-<table mat-table [dataSource]="dataSource">
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="showAddress(row)"></tr>
-
-  <ng-container matColumnDef="thumbnail">
-    <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let row"><img [src]="row?.picture?.thumbnail" alt="Thumbnail Image"/></td>
-  </ng-container>
-
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef>First Name</th>
-    <td mat-cell *matCellDef="let row">{{row?.name?.first}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef>Last Name</th>
-    <td mat-cell *matCellDef="let row">{{row?.name?.last}}</td>
-  </ng-container>
-</table>
-<app-side-panel *ngIf="selectedEntry" (closed)="panelClosed()" [entry]="selectedEntry" @fadeInOut
-(@fadeInOut.start)="onAnimationEvent($event)" (@fadeInOut.done)="onAnimationEvent($event)"></app-side-panel>
+<app-contact-table></app-contact-table>
 <!-- Footer? -->

@@ -3,9 +3,9 @@ export interface AddressEntry {
   name: {
     title?: string;
     first: string;
-    last: string
+    last: string;
   };
-  location?: {
+  location: {
     street: {
       number: number;
       name: string;
@@ -23,7 +23,7 @@ export interface AddressEntry {
       description: string;
     };
   };
-  email?: string;
+  email: string;
   login?: {
     uuid: string;
     username: string;
@@ -41,16 +41,16 @@ export interface AddressEntry {
     date: string;
     age: number;
   };
-  phone?: string;
-  cell?: string;
+  phone: string;
+  cell: string;
   id?: {
     name: string;
     value: string;
   };
-  picture?: {
-    large: string;
-    medium: string;
-    thumbnail: string;
+  picture: {
+    large?: string;
+    medium?: string;
+    thumbnail?: string;
   };
-  nat?: "AU" | "BR" | "CA" | "CH" | "DE" | "DK" | "ES" | "FI" | "FR" | "GB" | "IE" | "IN" | "IR" | "MX" | "NL" | "NO" | "NZ" | "RS" | "TR" | "UA" | "US"
+  nat?: "AU" | "BR" | "CA" | "CH" | "DE" | "DK" | "ES" | "FI" | "FR" | "GB" | "IE" | "IN" | "IR" | "MX" | "NL" | "NO" | "NZ" | "RS" | "TR" | "UA" | "US";
 }

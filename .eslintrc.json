@@ -16,6 +16,7 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -34,7 +35,28 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/class-literal-property-style": "error",
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "error",
+        "@typescript-eslint/member-delimiter-style": "error",
+        "brace-style": "off",
+        "@typescript-eslint/brace-style": "error",
+        "dot-notation": "off",
+        "@typescript-eslint/dot-notation": "error",
+        "indent": "off",
+        "@typescript-eslint/indent": ["error", 2],
+        "no-dupe-class-members": "off",
+        "@typescript-eslint/no-dupe-class-members": "error",
+        "no-extra-parens": "off",
+        "@typescript-eslint/no-extra-parens": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        "quotes": "off",
+        "@typescript-eslint/quotes": "error",
+        "semi": "off",
+        "@typescript-eslint/semi": "error"
       }
     },
     {
