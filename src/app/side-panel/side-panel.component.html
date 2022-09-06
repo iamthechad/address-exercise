@@ -1,0 +1,29 @@
+<div class="overlay" (click)="close()">
+</div>
+<div class="side-panel" @slideInOut (@slideInOut.start)="onAnimationEvent($event)" (@slideInOut.done)="onAnimationEvent($event)">
+  <mat-card>
+    <mat-card-header class="action-header">
+      <button mat-icon-button color="primary" aria-label="Return to address list" (click)="close()">
+        <mat-icon>arrow_back_ios_new</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-header>
+      <img mat-card-avatar [src]="entry?.picture?.thumbnail" *ngIf="entry?.picture?.thumbnail">
+      <mat-card-title>{{ entry?.name?.first }} {{ entry?.name?.last }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-info" *ngIf="entry?.phone">
+        <dl>
+          <dt class="mat-body-strong">Phone:</dt>
+          <dd>{{ entry?.phone }}</dd>
+        </dl>
+      </div>
+      <div class="card-info" *ngIf="entry?.cell">
+        <dl>
+          <dt class="mat-body-strong">Mobile:</dt>
+          <dd>{{ entry?.cell }}</dd>
+        </dl>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,57 @@
+:host {
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(#000, 0.3);
+  }
+
+  .side-panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    overflow-y: auto;
+    z-index: 101;
+
+    mat-card {
+      height: 100%;
+
+      .action-header {
+        margin-bottom: 1rem;
+
+        ::ng-deep .mat-card-header-text {
+          margin: 0;
+        }
+      }
+
+      .card-info {
+        border: thin grey solid;
+        border-radius: 5px;
+        margin-top: 1.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (width <= 450px) {
+  :host {
+    .side-panel {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (450px < width <= 1000px) {
+  :host {
+    .side-panel {
+      width: 75%;
+    }
+  }
+}
