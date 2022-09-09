@@ -30,7 +30,7 @@ describe("ContactDetailComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  fdescribe("Should show contact details", () => {
+  describe("Should show contact details", () => {
     it("Should show full info", () => {
       component.entry = mkSampleEntry("http://www.abc.com/myimage.png");
       fixture.detectChanges();
@@ -43,8 +43,12 @@ describe("ContactDetailComponent", () => {
       expect(phoneCards.length).toEqual(2);
 
       const phone = phoneCards[0];
-      console.log(phone.querySelector("dt"));
-      // const mobile = phoneCards[1];
+      expect(phone.querySelector("dt")).toBeTruthy();
+      expect(phone.querySelector("dd").textContent).toEqual("719-555-1234");
+
+      const mobile = phoneCards[1];
+      expect(mobile.querySelector("dt")).toBeTruthy();
+      expect(mobile.querySelector("dd").textContent).toEqual("719-555-5555");
     });
 
     it("Should show partial info", () => {
