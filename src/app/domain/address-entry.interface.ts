@@ -1,3 +1,9 @@
+/**
+ * Interface representing an Address Entry
+ * Reverse engineered from the randomuser.me documentation
+ * Most of the items are actually optional in the randomuser.me API, but I know that some of these
+ * values will always be queried by this implementation and are set as required
+ */
 export interface AddressEntry {
   gender?: "female" | "male";
   name: {

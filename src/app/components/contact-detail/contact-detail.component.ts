@@ -2,6 +2,9 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {AddressEntry} from "../../domain/address-entry.interface";
 import {SlideInOutAnimation} from "../../animations/slide-in-out.animation";
 
+/**
+ * Component to display a single address book entry
+ */
 @Component({
   selector: "app-contact-detail",
   templateUrl: "./contact-detail.component.html",

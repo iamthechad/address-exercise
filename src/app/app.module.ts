@@ -11,6 +11,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { ContactTableComponent } from "./components/contact-table/contact-table.component";
 import {ContactDetailComponent} from "./components/contact-detail/contact-detail.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import {ContactDetailComponent} from "./components/contact-detail/contact-detail
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatTableModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

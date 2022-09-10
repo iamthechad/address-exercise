@@ -9,7 +9,6 @@ export const SlideInOutAnimation = trigger("slideInOut", [
     animate("300ms ease-in", style({ transform: "translateX(0)" }))
   ]),
   transition(":leave", [
-    // style({ opacity: 1 }),
     animate("300ms ease-out", style({ transform: "translateX(3000px)" }))
   ])
 ]);

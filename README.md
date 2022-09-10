@@ -1,27 +1,53 @@
-# NuvalenceAddress
+# Nuvalence Address Programming Exercise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+## Set Up
 
-## Development server
+This example was written using NodeJS v16.14.2 and NPM v8.5.0. Module installation may behave differently on NPM versions older than v7.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Install the required dependencies with `npm ci`. 
 
-## Code scaffolding
+> This will ensure that the exact versions specified in `package-lock.json` get installed, since sometimes `npm install` will update the `package-lock.json` file and that can introduce inconsistencies between developers.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Running the Application
 
-## Build
+Execute `npm start` to run the application. Once running, it be available at http://localhost:4200/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Unit Tests
 
-## Running unit tests
+Run `npm test` to execute the unit tests. Unit tests are currently configured to open a new browser instance and run on changes until cancelled.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Linting
 
-## Running end-to-end tests
+Run `npm run lint` to execute lint.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Summary
 
-## Further help
+### Approach
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+For this example, I used Angular Material since it offers a relatively quick way to load and show data. I tried to split out concerns where possible to demonstrate how the example could be expanded to load other types of data with reusable infrastructure.
+
+### Features
+
+This example shows:
+
+* Loading data from the randomuser.me endpoint and displaying it in a table format
+* Opening a detail view as a slide-in when selecting an item from the table
+* Basic pagination support
+  * The randomuser.me API does not appear to support a maximum number of response, so I chose 100 as the total size of the data set.
+* The detail view has some animation support
+  * The background fades in to prevent interaction with the table while the detail view is open
+  * I tried to also animate the detail view's slide-in and slide-out behavior, but it's not working correctly 
+* Some basic unit tests
+
+Class diagram is available in `class_diagram.puml` and `class_diagram.png`. PlantUML is required to view the `puml` diagram
+
+### Improvements/Misses
+
+Given more time, I'd like to address:
+
+* Make all animations work
+* Spruce up the overall look and feel of the app. It's pretty basic at the moment
+* Possible look at presenting the detail view in a different manner. It works, but I'm not super happy with it
+* Decouple the behavior of the loading spinner from the datasource. I don't like how those are tied together at the moment, and it would be better to be able to pass some kind of progress monitor into the service call and allow that to trigger the spinner.
+* Fix the initial table view. It would be nice for the table to take up its expected space when no data has been loaded yet
+* Possibly implement a backend and move the randomuser.me call there and allow the frontend to call a more generic endpoint

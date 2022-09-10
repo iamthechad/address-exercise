@@ -1,3 +1,6 @@
+/**
+ * Interface to represent a paged response from the randomuser.me API
+ */
 export interface PagedResponse<T> {
   results: T[];
   info?: {

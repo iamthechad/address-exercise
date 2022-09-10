@@ -1,0 +1,65 @@
+@startuml
+!pragma layout smetana
+hide empty members
+package "@angular" {
+  interface DataSource
+  class HttpClient
+}
+interface AddressEntry {
+    +gender?: "female" | "male" | undefined
+    +name: { title?: string | undefined; first: string; last: string; }
+    +location: { street: {    number: number;    name: string;}; city: string; state: string; country: string; postcode: string; coordinates: {    latitude: string;    longitude: string;}; timezone: {    offset: string;    description: string;}; }
+    +email: string
+    +login?: { uuid: string; username: string; password: string; salt: string; md5: string; sha1: string; sha256: string; } | undefined
+    +dob?: { date: string; age: number; } | undefined
+    +registered?: { date: string; age: number; } | undefined
+    +phone: string
+    +cell: string
+    +id?: { name: string; value: string; } | undefined
+    +picture: { large?: string | undefined; medium?: string | undefined; thumbnail?: string | undefined; }
+    +nat?: "AU" | "BR" | "CA" | "CH" | "DE" | "DK" | "ES" | "FI" | "FR" | "GB" | "IE" | "IN" | "IR" | "MX" | "NL" | "NO" | "NZ" | "RS" | "TR" | "UA" | "US" | undefined
+}
+interface PagedResponse<T> {
+    +results: T[]
+    +info?: { seed: string; results: number; page: number; version: string; } | undefined
+}
+abstract class AbstractDataService<T> {
+    +{abstract} endpoint: string
+    #http: HttpClient
+    +load(pageNumber?: number, pageSize?: number, params?: HttpParams): Promise<T[]>
+}
+AbstractDataService o-- HttpClient
+AbstractDataService -- PagedResponse
+class AddressBookService extends AbstractDataService {
+    +endpoint: "https://randomuser.me/api/"
+    +load(pageNumber?: number, pageSize?: number, params?: HttpParams): Promise<AddressEntry[]>
+}
+class AddressBookDatasource extends DataSource {
+    -addressSubject: BehaviorSubject<AddressEntry[]>
+    -dataLoadingSubject: BehaviorSubject<boolean>
+    -addressBookService: AddressBookService
+    +connect(): Observable<AddressEntry[]>
+    +disconnect(): void
+    +loadAddresses(pageNumber?: number, pageSize?: number): void
+    +dataLoading(): Observable<boolean>
+}
+AddressBookDatasource -- AddressEntry
+AddressBookDatasource o-- AddressBookService
+class ContactTableComponent {
+    +dataSource: AddressBookDatasource
+    +displayedColumns: string[]
+    +dataLoading: Observable<boolean>
+    +selectedEntry?: AddressEntry | undefined
+    +showAddress(entry: AddressEntry): void
+    +panelClosed(): void
+    +onPageChanged(event: PageEvent): void
+}
+ContactTableComponent *-- AddressBookDatasource
+ContactTableComponent -- AddressEntry
+class ContactDetailComponent {
+    +entry?: AddressEntry | undefined
+    +closed: EventEmitter<void>
+    +close(): void
+}
+ContactDetailComponent -- AddressEntry
+@enduml
